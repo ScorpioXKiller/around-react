@@ -4,21 +4,21 @@ import Header from "./Header";
 import Main from "./Main";
 
 function App() {
-  const [isEditAvatarClick, setIsEditAvatarClick] = useState(false);
-  const [isEditProfileClick, setIsEditProfileClick] = useState(false);
-  const [isAddPlaceClick, setIsAddPlaceClick] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState("");
 
   const handleEditAvatarClick = () => {
-    setIsEditAvatarClick(true);
+    setIsEditAvatarPopupOpen(true);
   };
 
   const handleEditProfileClick = () => {
-    setIsEditProfileClick(true);
+    setIsEditProfilePopupOpen(true);
   };
 
   const handleAddPlaceClick = () => {
-    setIsAddPlaceClick(true);
+    setIsAddPlacePopupOpen(true);
   };
 
   const handleCardClick = (evt) => {
@@ -26,9 +26,9 @@ function App() {
   };
 
   const closeAllPopups = () => {
-    setIsEditAvatarClick(false);
-    setIsEditProfileClick(false);
-    setIsAddPlaceClick(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
     setSelectedCard("");
   };
 
@@ -41,9 +41,9 @@ function App() {
         onAddPlaceClick={handleAddPlaceClick}
         onCardClick={handleCardClick}
         selectedCard={selectedCard}
-        isEditAvatarClick={isEditAvatarClick}
-        isEditProfileClick={isEditProfileClick}
-        isAddPlaceClick={isAddPlaceClick}
+        isEditAvatarClick={isEditAvatarPopupOpen}
+        isEditProfileClick={isEditProfilePopupOpen}
+        isAddPlaceClick={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       />
       <Footer />

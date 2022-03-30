@@ -18,11 +18,11 @@ const ImagePopup = (props) => {
 
         <img
           className="card-popup__image"
-          src={`${props.selectedCard.src}`}
+          src={props.selectedCard.src}
           alt="Place"
         />
 
-        <h2 className="card-popup__name">{`${props.selectedCard.alt}`}</h2>
+        <h2 className="card-popup__name">{props.selectedCard.alt}</h2>
       </div>
     </section>
   );

@@ -28,15 +28,16 @@ const Main = (props) => {
         setUserAvatar(res.avatar);
       })
       .catch((err) => console.log(`Error while initializing data: ${err}`));
-  });
+  }, []);
 
   useEffect(() => {
-    api.getInitialCards().then((res) => {
-      setCards(() => {
-        return [...res];
-      });
-    });
-  });
+    api
+      .getInitialCards()
+      .then((res) => {
+        setCards(res);
+      })
+      .catch((err) => console.log(`Error while initializing data: ${err}`));
+  }, []);
 
   return (
     <main className="content">
@@ -85,8 +86,8 @@ const Main = (props) => {
 
       <section className="user-photos">
         <ul className="cards">
-          {cards.map((card, id) => (
-            <Card key={id} card={card} onClick={props.onCardClick} />
+          {cards.map((card) => (
+            <Card key={card._id} card={card} onClick={props.onCardClick} />
           ))}
         </ul>
       </section>
@@ -96,6 +97,7 @@ const Main = (props) => {
         title="Change profile picture"
         isOpen={props.isEditAvatarClick}
         onClose={props.onClose}
+        buttonTitle="Save"
       >
         <label className="form__field">
           <input
@@ -115,6 +117,7 @@ const Main = (props) => {
         title="Edit profile"
         isOpen={props.isEditProfileClick}
         onClose={props.onClose}
+        buttonTitle="Save"
       >
         <label className="form__field">
           <input
@@ -150,6 +153,7 @@ const Main = (props) => {
         title="New place"
         isOpen={props.isAddPlaceClick}
         onClose={props.onClose}
+        buttonTitle="Create"
       >
         <label className="form__field">
           <input
