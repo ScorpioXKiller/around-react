@@ -2,7 +2,7 @@ const ImagePopup = (props) => {
   return (
     <section
       className={`popup popup_type_imagePopup ${
-        props.selectedCard.src ? "popup_visible" : ""
+        props.selectedCard.isCardOpen ? "popup_visible" : ""
       }`}
     >
       <div className="popup__page-overlay" onClick={props.onClose}></div>
@@ -18,11 +18,11 @@ const ImagePopup = (props) => {
 
         <img
           className="card-popup__image"
-          src={props.selectedCard.src}
+          src={props.selectedCard.link}
           alt="Place"
         />
 
-        <h2 className="card-popup__name">{props.selectedCard.alt}</h2>
+        <h2 className="card-popup__name">{props.selectedCard.title}</h2>
       </div>
     </section>
   );
