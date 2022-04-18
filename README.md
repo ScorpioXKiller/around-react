@@ -1,10 +1,27 @@
-# Getting Started with Create React App
+# Around The U.S.
+## web-project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project description
+Around The U.S. - is an one page interactive website where you can add, remove, or like photos.. Also you can edit your profile by writing some information about yourself. Web-page adopts to any screen size, so you can enjoy it wherever you are, using your favourite device, such as: laptop, tablet, phone, etc.
 
-## Available Scripts
+### Ptoject functionality
 
-In the project directory, you can run:
+1. Interactive page
+2. Flexible design that adopts to any screen sizes.
+3. Smooth fonts and beauty content.
+
+
+### Techlologies and styles used
+
+1. HTML
+2. CSS
+3. JavaScript
+4. React
+5. BEM methodology
+6. Responsive-adaptive markup.
+7. VS Code IDE
+
+* [Link to the project on GitHub Pages](https://scorpioxkiller.github.io/around-react/index.html)
 
 ### `npm start`
 
@@ -28,43 +45,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
