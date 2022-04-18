@@ -5,7 +5,7 @@ import Header from "./Header";
 import Main from "./Main";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
-import Api from "./utils/api";
+import Api from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
