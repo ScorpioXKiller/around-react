@@ -5,18 +5,10 @@ import Header from "./Header";
 import Main from "./Main";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
-import Api from "../utils/api";
+import api from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
-  const api = new Api({
-    baseUrl: "https://around.nomoreparties.co/v1/group-12",
-    headers: {
-      authorization: "21827e70-d261-4f64-a3bc-4b52f52216ed",
-      "Content-Type": "application/json",
-    },
-  });
-
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
