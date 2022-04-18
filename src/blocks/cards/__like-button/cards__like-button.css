@@ -2,7 +2,7 @@
     width: 21px;
     height: 19px;
     border: 0;
-    background-image: url("../../../../images/ui/like-button.svg");
+    background-image: url("../../../images/ui/like-button.svg");
 }
 
 .cards__like-button:hover {

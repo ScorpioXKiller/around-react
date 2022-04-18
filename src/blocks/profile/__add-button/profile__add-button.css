@@ -4,7 +4,7 @@
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 2px;
-    background-image: url("../../../../images/ui/add-button.svg");
+    background-image: url("../../../images/ui/add-button.svg");
     background-size: 20px;
 }
 
