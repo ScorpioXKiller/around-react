@@ -1,30 +1,30 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Card = (props) => {
+const Card = ({ card, ...props}) => {
   const currentUserContext = useContext(CurrentUserContext);
 
-  const isOwn = props.card.owner._id === currentUserContext._id;
-  const isLiked = props.card.likes.some(
+  const isOwn = card.owner._id === currentUserContext._id;
+  const isLiked = card.likes.some(
     (user) => user._id === currentUserContext._id
   );
 
   const handleLike = () => {
-    props.onLike(props.card, isLiked);
+    props.onLike(card, isLiked);
   };
 
   const handleDelete = () => {
-    props.onDelete(props.card._id);
+    props.onDelete(card._id);
   };
 
   return (
     <li key={props} className="cards__item">
       <img
         className="cards__photo"
-        src={`${props.card.link}`}
-        alt={props.card.name}
+        src={`${card.link}`}
+        alt={card.name}
         onClick={() =>
-          props.onClick({ link: props.card.link, name: props.card.name })
+          props.onClick({ link: card.link, name: card.name })
         }
       />
 
@@ -39,7 +39,7 @@ const Card = (props) => {
       )}
 
       <div className="cards__content">
-        <p className="cards__name">{props.card.name}</p>
+        <p className="cards__name">{card.name}</p>
 
         <div className="cards__like">
           <button

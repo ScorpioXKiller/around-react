@@ -5,14 +5,14 @@ import Card from "./Card";
 import ImagePopup from "./ImagePopup";
 
 const Main = (props) => {
-  const currentUserContext = useContext(CurrentUserContext);
+  const userData = useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile">
         <div
           className="profile__avatar"
-          style={{ backgroundImage: `url(${currentUserContext.avatar})` }}
+          style={{ backgroundImage: `url(${userData.avatar})` }}
         >
           <div className="profile__avatar-overlay">
             <img
@@ -27,7 +27,7 @@ const Main = (props) => {
 
         <div className="profile__info-container">
           <div className="profile__info">
-            <h1 className="profile__name">{currentUserContext.name}</h1>
+            <h1 className="profile__name">{userData.name}</h1>
 
             <button
               className="button profile__edit-button"
@@ -38,7 +38,7 @@ const Main = (props) => {
               onClick={props.onEditProfileClick}
             ></button>
 
-            <p className="profile__about">{currentUserContext.about}</p>
+            <p className="profile__about">{userData.about}</p>
           </div>
 
           <button

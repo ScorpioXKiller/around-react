@@ -39,6 +39,7 @@ const EditProfilePopup = (props) => {
           required
           minLength="2"
           maxLength="40"
+          value={name || ""}
           onChange={(event) => setName(event.target.value)}
         />
         <span className="form__input-error name-input-error"></span>
@@ -54,6 +55,7 @@ const EditProfilePopup = (props) => {
           required
           minLength="2"
           maxLength="200"
+          value={description || ""}
           onChange={(event) => setDescription(event.target.value)}
         />
         <span className="form__input-error about-input-error"></span>
