@@ -110,7 +110,6 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setSelectedCard({
       isCardOpen: false,
-      link: "",
     });
   };
 

@@ -51,7 +51,7 @@ const Card = ({ card, ...props}) => {
             aria-label="like"
             onClick={handleLike}
           ></button>
-          <span className="cards__likes-amount"></span>
+          <span className="cards__likes-amount">{card.likes.length}</span>
         </div>
       </div>
     </li>
