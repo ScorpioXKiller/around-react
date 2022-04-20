@@ -9,7 +9,7 @@ const ImagePopup = ({ selectedCard, ...props}) => {
       setPopupImageLink(selectedCard.link);
       setPopupImageName(selectedCard.title)
     }
-  }, [selectedCard.isCardOpen])
+  }, [selectedCard])
 
   return (
     <section
