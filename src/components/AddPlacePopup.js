@@ -28,6 +28,7 @@ const AddPlacePopup = (props) => {
     >
       <label className="form__field">
         <input
+          value={title}
           onChange={(event) => setTitle(event.target.value)}
           type="text"
           className="form__input form__input_el_card-title"
@@ -43,6 +44,7 @@ const AddPlacePopup = (props) => {
 
       <label className="form__field">
         <input
+          value={link}
           onChange={(event) => setLink(event.target.value)}
           type="url"
           className="form__input form__input_el_image-link"

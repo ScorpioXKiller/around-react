@@ -67,29 +67,6 @@ const Main = (props) => {
       </section>
 
       <ImagePopup selectedCard={props.selectedCard} onClose={props.onClose} />
-
-      <section className="popup confirm-popup">
-        <div className="popup__page-overlay"></div>
-
-        <div className="popup__container">
-          <button
-            className="button popup__close-button"
-            type="button"
-            title="Close"
-            aria-label="close"
-          ></button>
-          <h2 className="popup__title confirm-popup-title">Are you sure?</h2>
-          <form className="form" noValidate>
-            <button
-              className="button form__submit-button"
-              type="submit"
-              title="Confirm"
-            >
-              Yes
-            </button>
-          </form>
-        </div>
-      </section>
     </main>
   );
 };

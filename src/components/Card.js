@@ -24,7 +24,7 @@ const Card = ({ card, ...props}) => {
         src={`${card.link}`}
         alt={card.name}
         onClick={() =>
-          props.onClick({ link: card.link, name: card.name })
+          props.onClick({ id: card._id, link: card.link, name: card.name })
         }
       />
 

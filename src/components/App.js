@@ -7,11 +7,13 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
 import api from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
+import ConfirmPopup from "./ConfirmPopup";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
@@ -49,6 +51,7 @@ function App() {
   const handleCardClick = (data) => {
     setSelectedCard({
       isCardOpen: true,
+      id: data.id,
       link: data.link,
       title: data.name,
     });
@@ -68,10 +71,10 @@ function App() {
   };
 
   const handleCardDelete = (id) => {
-    api
-      .deleteCard(id)
-      .then(() => setCards(cards.filter((card) => card._id !== id)))
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
+    setIsConfirmPopupOpen(true);
+    setSelectedCard({
+      id: id
+    });
   };
 
   const handleUpdateUser = ({ name, about }) => {
@@ -104,10 +107,21 @@ function App() {
       .catch((err) => console.log(`Error while initializing data: ${err}`));
   };
 
+  const handleDeleteSubmit = (id) => {
+    api
+      .deleteCard(id)
+      .then(() => {
+        setCards(cards.filter((card) => card._id !== id));
+        closeAllPopups();
+      })
+      .catch((err) => console.log(`Error while initializing data: ${err}`));
+  };
+
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setIsConfirmPopupOpen(false);
     setSelectedCard({
       isCardOpen: false,
     });
@@ -134,6 +148,13 @@ function App() {
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
 
+        <ConfirmPopup
+          isOpen={isConfirmPopupOpen}
+          selectedCard={selectedCard}
+          onClose={closeAllPopups}
+          onDeleteSubmit={handleDeleteSubmit}
+        />
+
         <Header />
         <Main
           onEditAvatarClick={handleEditAvatarClick}
@@ -142,8 +163,6 @@ function App() {
           onCardClick={handleCardClick}
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
-          onUpdateUser={handleUpdateUser}
-          onUpdateAvatar={handleUpdateAvatar}
           selectedCard={selectedCard}
           isAddPlaceClick={isAddPlacePopupOpen}
           onClose={closeAllPopups}
