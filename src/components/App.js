@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -8,6 +8,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import api from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
 import ConfirmPopup from "./ConfirmPopup";
+import LoadingSpinner from "./LoadingSpinner";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -17,21 +18,24 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [addPlaceSubmitButtonTitle, setAddPlaceSubmitButtonTitle] =
+    useState("Create");
+  const [editAvatarSubmitButtonTitle, setEditAvatarSubmitButtonTitle] =
+    useState("Save");
+  const [editProfileSubmitButtonTitle, setEditProfileSubmitButtonTitle] =
+    useState("Save");
+  const [confirmDeleteButtonTitle, setConfirmDeleteButtonTitle] =
+    useState("Yes");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     api
-      .getUserInfo()
-      .then((user) => {
+      .getInitialData()
+      .then(([card, user]) => {
         setCurrentUser(user);
-      })
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
-  }, []);
-
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((res) => {
-        setCards(res);
+        setCards(card);
+        setIsLoading(false);
       })
       .catch((err) => console.log(`Error while initializing data: ${err}`));
   }, []);
@@ -57,7 +61,7 @@ function App() {
     });
   };
 
-  const handleCardLike = (card, isLiked) => {
+  const handleCardLike = useCallback((card, isLiked) => {
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -68,53 +72,61 @@ function App() {
         );
       })
       .catch((err) => console.log(`Error while initializing data: ${err}`));
-  };
+  }, []);
 
   const handleCardDelete = (id) => {
     setIsConfirmPopupOpen(true);
     setSelectedCard({
-      id: id
+      id: id,
     });
   };
 
   const handleUpdateUser = ({ name, about }) => {
+    setEditProfileSubmitButtonTitle("Saving...");
     api
       .uploadUserInfo({ name, about })
       .then((user) => {
         setCurrentUser(user);
         closeAllPopups();
       })
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
+      .catch((err) => console.log(`Error while initializing data: ${err}`))
+      .finally(() => setEditProfileSubmitButtonTitle("Save"));
   };
 
   const handleUpdateAvatar = (url) => {
+    setEditAvatarSubmitButtonTitle("Saving...");
     api
       .uploadProfileAvatar(url)
       .then((user) => {
         setCurrentUser(user);
         closeAllPopups();
       })
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
+      .catch((err) => console.log(`Error while initializing data: ${err}`))
+      .finally(() => setEditAvatarSubmitButtonTitle("Save"));
   };
 
   const handleAddPlaceSubmit = ({ name, link }) => {
+    setAddPlaceSubmitButtonTitle("Saving...");
     api
       .uploadCard({ name, link })
       .then((card) => {
         setCards([card, ...cards]);
         closeAllPopups();
       })
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
+      .catch((err) => console.log(`Error while initializing data: ${err}`))
+      .finally(() => setAddPlaceSubmitButtonTitle("Create"));
   };
 
-  const handleDeleteSubmit = (id) => {
+  const handleDeleteSubmit = (cardId) => {
+    setConfirmDeleteButtonTitle("Deleting...");
     api
-      .deleteCard(id)
+      .deleteCard(cardId)
       .then(() => {
-        setCards(cards.filter((card) => card._id !== id));
+        setCards(cards.filter((card) => card._id !== cardId));
         closeAllPopups();
       })
-      .catch((err) => console.log(`Error while initializing data: ${err}`));
+      .catch((err) => console.log(`Error while initializing data: ${err}`))
+      .finally(() => setConfirmDeleteButtonTitle("Yes"));
   };
 
   const closeAllPopups = () => {
@@ -130,20 +142,25 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+        {isLoading && <LoadingSpinner />}
+
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
+          submitButtonTitle={editAvatarSubmitButtonTitle}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
 
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
+          submitButtonTitle={editProfileSubmitButtonTitle}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
+          submitButtonTitle={addPlaceSubmitButtonTitle}
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
@@ -151,6 +168,7 @@ function App() {
         <ConfirmPopup
           isOpen={isConfirmPopupOpen}
           selectedCard={selectedCard}
+          submitButtonTitle={confirmDeleteButtonTitle}
           onClose={closeAllPopups}
           onDeleteSubmit={handleDeleteSubmit}
         />

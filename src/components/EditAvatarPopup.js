@@ -16,7 +16,7 @@ const EditAvatarPopup = (props) => {
       title="Change profile picture"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      buttonTitle="Save"
+      submitButtonTitle={props.submitButtonTitle}
       onSubmit={handleSubmit}
     >
       <label className="form__field">

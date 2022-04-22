@@ -26,7 +26,7 @@ const EditProfilePopup = (props) => {
       title="Edit profile"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      buttonTitle="Save"
+      submitButtonTitle={props.submitButtonTitle}
       onSubmit={handleSubmit}
     >
       <label className="form__field">

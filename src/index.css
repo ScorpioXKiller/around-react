@@ -49,3 +49,4 @@
 @import url("./blocks/card-popup/__image/card-popup__image.css");
 @import url("./blocks/card-popup/__name/card-popup__name.css");
 @import url("./blocks/card-popup/__close-button/card-popup__close-button.css");
+@import url("./blocks/loader/loader.css");

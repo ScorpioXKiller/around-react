@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 const AddPlacePopup = (props) => {
@@ -23,7 +23,7 @@ const AddPlacePopup = (props) => {
       title="New place"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      buttonTitle="Create"
+      submitButtonTitle={props.submitButtonTitle}
       onSubmit={handleSubmit}
     >
       <label className="form__field">
@@ -59,4 +59,4 @@ const AddPlacePopup = (props) => {
   );
 };
 
-export default AddPlacePopup;
+export default memo(AddPlacePopup);

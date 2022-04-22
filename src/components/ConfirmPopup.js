@@ -3,6 +3,7 @@ const ConfirmPopup = (props) => {
     event.preventDefault();
     props.onDeleteSubmit(props.selectedCard.id);
   };
+
   return (
     <section
       className={`popup confirm-popup ${props.isOpen && "popup_visible"}`}
@@ -24,7 +25,7 @@ const ConfirmPopup = (props) => {
             type="submit"
             title="Confirm"
           >
-            Yes
+            {props.submitButtonTitle}
           </button>
         </form>
       </div>

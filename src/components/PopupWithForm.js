@@ -31,7 +31,7 @@ const PopupWithForm = (props) => {
             type="submit"
             title="Save"
           >
-            {props.buttonTitle}
+            {props.submitButtonTitle}
           </button>
         </form>
       </div>
