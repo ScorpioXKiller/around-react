@@ -18,7 +18,7 @@ const Register = (props) => {
   useEffect(() => {
     changeLinkTextContext('Sign in');
     changeLinkPathContext('/signin');
-  }, []);
+  }, [changeLinkTextContext, changeLinkPathContext]);
 
   const handleRegister = (event) => {
     event.preventDefault();

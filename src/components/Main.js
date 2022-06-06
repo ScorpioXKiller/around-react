@@ -14,7 +14,7 @@ const Main = (props) => {
   useEffect(() => {
     changeLinkTextContext('Sign out');
     changeLinkPathContext('/signin');
-  }, []);
+  }, [changeLinkTextContext, changeLinkPathContext]);
 
   return (
     <>
