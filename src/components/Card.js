@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useContext } from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-const Card = ({ card, ...props}) => {
+const Card = ({ card, ...props }) => {
   const currentUserContext = useContext(CurrentUserContext);
 
   const isOwn = card.owner._id === currentUserContext._id;
@@ -18,9 +18,9 @@ const Card = ({ card, ...props}) => {
   };
 
   return (
-    <li key={props} className="cards__item">
+    <li key={props} className='cards__item'>
       <img
-        className="cards__photo"
+        className='cards__photo'
         src={`${card.link}`}
         alt={card.name}
         onClick={() =>
@@ -30,28 +30,28 @@ const Card = ({ card, ...props}) => {
 
       {isOwn && (
         <button
-          className="button cards__delete-button"
-          type="button"
-          title="Delete"
-          aria-label="delete"
+          className='button cards__delete-button'
+          type='button'
+          title='Delete'
+          aria-label='delete'
           onClick={handleDelete}
         ></button>
       )}
 
-      <div className="cards__content">
-        <p className="cards__name">{card.name}</p>
+      <div className='cards__content'>
+        <p className='cards__name'>{card.name}</p>
 
-        <div className="cards__like">
+        <div className='cards__like'>
           <button
             className={`button cards__like-button ${
-              isLiked ? "cards__like-button_active" : ""
+              isLiked ? 'cards__like-button_active' : ''
             }`}
-            type="button"
-            title="Like"
-            aria-label="like"
+            type='button'
+            title='Like'
+            aria-label='like'
             onClick={handleLike}
           ></button>
-          <span className="cards__likes-amount">{card.likes.length}</span>
+          <span className='cards__likes-amount'>{card.likes.length}</span>
         </div>
       </div>
     </li>

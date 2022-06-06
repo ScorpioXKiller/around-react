@@ -1,40 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const ImagePopup = ({ selectedCard, ...props}) => {
-  const [popupImageLink, setPopupImageLink] = useState("");
-  const [popupImageTitle, setPopupImageName] = useState("");
+const ImagePopup = ({ selectedCard, ...props }) => {
+  const [popupImageLink, setPopupImageLink] = useState('');
+  const [popupImageTitle, setPopupImageName] = useState('');
 
   useEffect(() => {
-    if(selectedCard.isCardOpen) {
+    if (selectedCard.isCardOpen) {
       setPopupImageLink(selectedCard.link);
-      setPopupImageName(selectedCard.title)
+      setPopupImageName(selectedCard.title);
     }
-  }, [selectedCard])
+  }, [selectedCard]);
 
   return (
     <section
       className={`popup popup_type_imagePopup ${
-        selectedCard.isCardOpen ? "popup_visible" : ""
+        selectedCard.isCardOpen ? 'popup_visible' : ''
       }`}
     >
-      <div className="popup__page-overlay" onClick={props.onClose}></div>
+      <div className='popup__page-overlay' onClick={props.onClose}></div>
 
-      <div className="card-popup__container">
+      <div className='card-popup__container'>
         <button
-          className="button popup__close-button card-popup__close-button"
-          type="button"
-          title="Close"
-          aria-label="close"
+          className='button popup__close-button card-popup__close-button'
+          type='button'
+          title='Close'
+          aria-label='close'
           onClick={props.onClose}
         ></button>
 
-        <img
-          className="card-popup__image"
-          src={popupImageLink}
-          alt="Place"
-        />
+        <img className='card-popup__image' src={popupImageLink} alt='Place' />
 
-        <h2 className="card-popup__name">{popupImageTitle}</h2>
+        <h2 className='card-popup__name'>{popupImageTitle}</h2>
       </div>
     </section>
   );

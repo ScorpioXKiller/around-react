@@ -4,7 +4,6 @@
     max-width: 100vw;
     min-width: 320px;
     min-height: 100vh;
-    padding-bottom: 60px;
     color: white;
     background-color: black;
     position: relative;
@@ -14,16 +13,4 @@
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
-}
-
-@media screen and (max-width: 880px) {
-    .page {
-        padding-bottom: 6.818vw;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .page{
-        padding-bottom: 36px;
-    }   
 }
